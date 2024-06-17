@@ -9,11 +9,16 @@ import { Component, Input } from '@angular/core';
 })
 export class CheckboxComponent {
   @Input() label = "";
-  @Input({transform: checkboxId}) id: string =""; 
-  @Input() name="";
-  @Input() value=""; 
+  @Input({transform: checkboxId}) id: string = ""; 
+  @Input() name = "";
+  @Input() value = "";
+  @Input({transform: checkboxChecked}) checked: boolean = false; 
 }
 
 function checkboxId(value: string) {
   return `${value}-checkbox`;
+}
+
+function checkboxChecked() {
+  return true;
 }
