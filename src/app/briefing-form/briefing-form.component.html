@@ -5,9 +5,9 @@
           <span>Message Types:</span>
         </td>
         <td style="padding-bottom: 10px;">
-          <app-checkbox id="1" name="1" label="METAR" value="METAR" checked />
-          <app-checkbox id="2" name="2" label="SIGMET" value="SIGMET" />
-          <app-checkbox id="3" name="3" label="TAF" value="TAF" />
+          <app-checkbox (change)="setMessageType($event)" id="1" name="messageType" label="METAR" value="METAR" checked />
+          <app-checkbox (change)="setMessageType($event)" id="2" name="messageType" label="SIGMET" value="SIGMET" />
+          <app-checkbox (change)="setMessageType($event)" id="3" name="messageType" label="TAF" value="TAF" />
         </td>
       </tr>
       <tr>
@@ -15,7 +15,7 @@
           <span>Airports:</span>
         </td>
         <td>
-          <input style="width: -webkit-fill-available;" type="text" id="name" name="name" />
+          <input [(ngModel)]="airports" style="width: -webkit-fill-available;" type="text" id="airports" name="airports" />
         </td>
       </tr>
       <tr>
@@ -23,7 +23,7 @@
           <span>Countries:</span>
         </td>
         <td style="padding-bottom: 10px;">
-          <input style="width: -webkit-fill-available;" type="text" id="name" name="name" />
+          <input [(ngModel)]="countries" style="width: -webkit-fill-available;" type="text" id="countries" name="countries" />
         </td>
       </tr>
       <tr>
