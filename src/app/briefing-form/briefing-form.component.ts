@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { Briefing } from '../model/briefing';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { BriefingService } from '../service/briefing.service';
 
 @Component({
   selector: 'app-briefing-form',
@@ -13,7 +15,9 @@ import { FormsModule } from '@angular/forms';
 export class BriefingFormComponent {
   atLeastOneCheckboxSelected = true;
   atLeastOneInputFilled = true;
-  model = new Briefing(["METAR"], ["KBC", "IBL"], ["CC", "ABC"]);
+  model = new Briefing(["METAR"], ["LKPR", "EGLL"], ["SQ"]);
+
+  constructor(private briefing: BriefingService) {}
 
   setMessageType(event: any) {
     this.model = event.target.checked ? new Briefing(
@@ -47,5 +51,10 @@ export class BriefingFormComponent {
   set countries(value: string) {
     this.model = new Briefing(this.model.messageTypes, this.model.airports, value ? value.split(' ') : []);
     this.atLeastOneInputFilled = this.model.airports.length > 0 || this.model.countries.length > 0;
+  }
+
+  onSubmit() {
+    console.log('onSubmit fired');
+    this.briefing.getBriefings(this.model).subscribe(result => console.log(result));
   }
 }
