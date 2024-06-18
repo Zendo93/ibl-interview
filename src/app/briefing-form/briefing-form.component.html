@@ -10,6 +10,13 @@
           <app-checkbox (change)="setMessageType($event)" id="3" name="messageType" label="TAF" value="TAF" />
         </td>
       </tr>
+      <tr [hidden] = "atLeastOneCheckboxSelected">
+        <td>
+        </td>
+        <td>
+            <span style="color: red;">At least one message type must be selected.</span>
+        </td>
+      </tr>
       <tr>
         <td style="padding-right: 50px;">
           <span>Airports:</span>
@@ -24,6 +31,13 @@
         </td>
         <td style="padding-bottom: 10px;">
           <input [(ngModel)]="countries" style="width: -webkit-fill-available;" type="text" id="countries" name="countries" />
+        </td>
+      </tr>
+      <tr [hidden] = "atLeastOneInputFilled">
+        <td>
+        </td>
+        <td>
+            <span style="color: red;">At least one airport (ICAO code) or country (WMO code) is required. Multiple airport or country codes are separated by space.</span>
         </td>
       </tr>
       <tr>
