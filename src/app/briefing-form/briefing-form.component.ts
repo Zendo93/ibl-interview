@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OutputRef, output } from '@angular/core';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { Briefing } from '../model/briefing';
+import { Briefing, IResult } from '../model/briefing';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { BriefingService } from '../service/briefing.service';
 
 @Component({
@@ -16,6 +15,7 @@ export class BriefingFormComponent {
   atLeastOneCheckboxSelected = true;
   atLeastOneInputFilled = true;
   model = new Briefing(["METAR"], ["LKPR", "EGLL"], ["SQ"]);
+  onResultChange = output<IResult>();
 
   constructor(private briefing: BriefingService) {}
 
@@ -55,6 +55,6 @@ export class BriefingFormComponent {
 
   onSubmit() {
     console.log('onSubmit fired');
-    this.briefing.getBriefings(this.model).subscribe(result => console.log(result));
+    this.briefing.getBriefings(this.model).subscribe(result => this.onResultChange.emit(result));
   }
 }

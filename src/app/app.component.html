@@ -179,10 +179,10 @@
 
 <main class="main">
   <div class="content">
-    <app-briefing-form />
+    <app-briefing-form (onResultChange)="getResult($event)" />
   </div>
   <div class="content">
-    <app-briefing-result />
+    <app-briefing-result [result]="result"  />
   </div>
 </main>
 

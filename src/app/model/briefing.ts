@@ -1,3 +1,14 @@
+export interface IGroupedResult {
+    stationId: string;
+    briefings: IGroupedBriefing[];
+}
+
+export interface IGroupedBriefing {
+    reportType: string;
+    reportTime: string;
+    textHTML: string;
+}
+
 export interface IBriefing {
     placeId: string;
     queryType: string;

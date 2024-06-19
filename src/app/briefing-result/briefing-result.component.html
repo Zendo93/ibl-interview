@@ -1,22 +1,14 @@
 <table class="result">
-    <tr>
-      <td style="background-color: rgb(182, 180, 180);"><b>EGLL</b></td>
-      <td style="background-color: rgb(182, 180, 180);"></td>
-      <td style="background-color: rgb(182, 180, 180);"></td>
-    </tr>
-    <tr>
-      <td>METAR</td>
-      <td>15.2.2017 09:20:00</td>
-      <td>EGLL 151050Z AUTO 18008KT 130V250 9999 FEW033/// //////CB 19/11 Q0996 TEMPO SHRA=</td>
-    </tr>
-    <tr>
-      <td style="background-color: rgb(182, 180, 180);"><b>LKPR</b></td>
-      <td style="background-color: rgb(182, 180, 180);"></td>
-      <td style="background-color: rgb(182, 180, 180);"></td>
-    </tr>
-    <tr>
-      <td>METAR</td>
-      <td>15.2.2017 09:20:00</td>
-      <td>EGLL 151050Z AUTO 18008KT 130V250 9999 FEW033/// //////CB 19/11 Q0996 TEMPO SHRA=</td>
-    </tr>
+    <tbody *ngFor="let item of result">
+        <tr>
+            <td style="background-color: rgb(182, 180, 180);"><b>{{item.stationId}}</b></td>
+            <td style="background-color: rgb(182, 180, 180);"></td>
+            <td style="background-color: rgb(182, 180, 180);"></td>
+        </tr>
+        <tr *ngFor="let value of item.briefings">
+            <td>{{value.queryType}}</td>
+            <td>{{value.reportTime}}</td>
+            <td [innerHtml]="value.textHTML"></td>
+        </tr>
+    </tbody>
   </table>
