@@ -16,7 +16,6 @@ export class AppComponent {
   result: IResult = {} as IResult;
 
   getResult(event: IResult) {
-    console.log(event);
     this.result = event;
   }
 }

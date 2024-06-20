@@ -14,7 +14,7 @@ import { BriefingService } from '../service/briefing.service';
 export class BriefingFormComponent {
   atLeastOneCheckboxSelected = true;
   atLeastOneInputFilled = true;
-  model = new Briefing(["METAR", "TAF_LONGTAF"], ["LKPR", "EGLL"], ["SQ"]);
+  model = new Briefing(["METAR"], [], []);
   onResultChange = output<IResult>();
 
   constructor(private briefing: BriefingService) {}
@@ -54,7 +54,6 @@ export class BriefingFormComponent {
   }
 
   onSubmit() {
-    console.log('onSubmit fired');
     this.briefing.getBriefings(this.model).subscribe(result => this.onResultChange.emit(result));
   }
 }
