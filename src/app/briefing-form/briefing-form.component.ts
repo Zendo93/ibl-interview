@@ -54,6 +54,11 @@ export class BriefingFormComponent {
   }
 
   onSubmit() {
-    this.briefing.getBriefings(this.model).subscribe(result => this.onResultChange.emit(result));
+    this.atLeastOneCheckboxSelected = this.model.messageTypes.length > 0;
+    this.atLeastOneInputFilled = this.model.airports.length > 0 || this.model.countries.length > 0;
+    
+    if (this.atLeastOneCheckboxSelected && this.atLeastOneInputFilled) {
+      this.briefing.getBriefings(this.model).subscribe(result => this.onResultChange.emit(result));
+    }
   }
 }
