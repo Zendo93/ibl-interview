@@ -14,7 +14,7 @@ import { BriefingService } from '../service/briefing.service';
 export class BriefingFormComponent {
   atLeastOneCheckboxSelected = true;
   atLeastOneInputFilled = true;
-  model = new Briefing(["METAR"], ["LKPR", "EGLL"], ["SQ"]);
+  model = new Briefing(["METAR", "TAF_LONGTAF"], ["LKPR", "EGLL"], ["SQ"]);
   onResultChange = output<IResult>();
 
   constructor(private briefing: BriefingService) {}

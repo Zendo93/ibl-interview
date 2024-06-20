@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { IResult } from '../model/briefing';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
+import { ColorizeWordsPipe } from '../pipe/colorize-words.pipe';
 
 @Component({
   selector: 'app-briefing-result',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DatePipe, ColorizeWordsPipe],
   templateUrl: './briefing-result.component.html',
   styleUrl: './briefing-result.component.css'
 })
