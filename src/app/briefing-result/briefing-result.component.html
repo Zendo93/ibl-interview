@@ -6,7 +6,7 @@
             <td style="background-color: rgb(182, 180, 180);"></td>
         </tr>
         <tr *ngFor="let value of item.briefings">
-            <td>{{value.queryType}}</td>
+            <td>{{value.queryType === 'TAF_LONGTAF' ? 'TAF' : value.queryType}}</td>
             <td>{{value.reportTime | date:'dd.MM.YYYY hh:mm:ss'}}</td>
             <td [innerHtml]="value.text | colorizeWords"></td>
         </tr>
