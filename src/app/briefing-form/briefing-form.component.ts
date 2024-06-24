@@ -16,6 +16,7 @@ export class BriefingFormComponent {
   atLeastOneInputFilled = true;
   model = new Briefing(["METAR"], [], []);
   onResultChange = output<IResult>();
+  onLoaderVisibilityChange = output<boolean>();
 
   constructor(private briefing: BriefingService) {}
 
@@ -58,6 +59,8 @@ export class BriefingFormComponent {
     this.atLeastOneInputFilled = this.model.airports.length > 0 || this.model.countries.length > 0;
     
     if (this.atLeastOneCheckboxSelected && this.atLeastOneInputFilled) {
+      this.onResultChange.emit({} as IResult)
+      this.onLoaderVisibilityChange.emit(true);
       this.briefing.getBriefings(this.model).subscribe(result => this.onResultChange.emit(result));
     }
   }

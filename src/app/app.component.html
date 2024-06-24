@@ -179,9 +179,13 @@
 
 <main class="main">
   <div class="content">
-    <app-briefing-form (onResultChange)="getResult($event)" />
+    <app-briefing-form 
+      (onLoaderVisibilityChange)="changeLoaderVisibility($event)" 
+      (onResultChange)="getResult($event)" 
+    />
   </div>
   <div class="content">
+    <mat-spinner *ngIf="isLoaderVisible" class="loader"></mat-spinner>
     <app-briefing-result [result]="result"  />
   </div>
 </main>
